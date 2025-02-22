@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Text Similarity - Cosine Similarity</title>
+    <style>
+        /* Body and page styling */
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #f4f4f9;
+            margin: 0;
+            padding: 0;
+        }
+
+        /* Container for the form */
+        .container {
+            width: 50%;
+            max-width: 600px;
+            margin: 50px auto;
+            padding: 40px;
+            background-color: #fff;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
+        }
+
+        /* Title styling */
+        h1 {
+            text-align: center;
+            color: #333;
+            font-size: 2em;
+            margin-bottom: 20px;
+        }
+
+        /* Label styling */
+        label {
+            font-weight: bold;
+            color: #444;
+            display: block;
+            margin-bottom: 1px;
+        }
+
+        /* Input styling */
+        input[type="text"] {
+            width: 100%;
+            padding: 12px;
+            margin: 1px 0;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-size: 1em;
+            transition: border-color 0.3s;
+        }
+
+        input[type="text"]:focus {
+            border-color: #5c6bc0;
+            outline: none;
+        }
+
+        /* Button styling */
+        button {
+            width: 100%;
+            padding: 12px;
+            background-color: #5c6bc0;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            font-size: 1.1em;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        button:hover {
+            background-color: #3f51b5;
+        }
+
+        /* Result section */
+        .result {
+            margin-top: 20px;
+            background-color: #f9f9f9;
+            padding: 20px;
+            border-radius: 8px;
+            border: 1px solid #ddd;
+        }
+
+        .result p {
+            font-size: 1.2em;
+            margin: 10px 0;
+        }
+
+        .result p strong {
+            color: #5c6bc0;
+        }
+
+        /* Media queries for responsiveness */
+        @media (max-width: 768px) {
+            .container {
+                width: 80%;
+                padding: 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+
+<div class="container">
+    <h1>Text Similarity - Cosine Similarity</h1>
+    <form method="POST" action="/predict">
+        <label for="premise">Sentence A:</label><br>
+        <input type="text" id="premise" name="premise" placeholder="Enter sentence a" required><br><br>
+
+        <label for="hypothesis">Sentence B:</label><br>
+        <input type="text" id="hypothesis" name="hypothesis" placeholder="Enter sentence b" required><br><br>
+
+        <button type="submit">Compute Similarity</button>
+    </form>
+
+    {% if premise and hypothesis %}
+    <div class="result">
+        <p><strong>Sentence A:</strong> {{ premise }}</p>
+        <p><strong>Sentence B:</strong> {{ hypothesis }}</p>
+        <p><strong>Cosine Similarity:</strong> {{ similarity }}</p>
+        <p><strong>Relationship:</strong> {{ label }}</p>
+    </div>
+    {% endif %}
+</div>
+
+</body>
+</html>
