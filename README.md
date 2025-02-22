@@ -86,8 +86,8 @@ We evaluated the Sentence-BERT model using the SNLI or MNLI datasets, which prov
 
 #### Evaluation Summary:
 - | Model Type   | SNLI or MNLI Accuracy |
-|--------------|---------------|
-| Our Model    | 35.3%         |
+  |--------------|---------------|
+  | Our Model    | 35.3%         |
 
 - **Cosine Similarity**: 0.9933
 
