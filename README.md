@@ -78,7 +78,7 @@ Both datasets consist of premise-hypothesis pairs with labels indicating whether
 
 ### Training Results:
 Sample results from training after multiple epochs:
-- **Epoch 5**: Loss = 1.503545
+- **Final Epoch**: Loss = 1.503545
 - **Average Cosine Similarity**: 0.9933
 
 ---
