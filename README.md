@@ -1,5 +1,9 @@
 # NLP_a4_Do-you-AGREE
-# BERT and Sentence-BERT Model Implementation for NLI
+
+This assignment will guide you in training a pre-trained model like BERT from scratch, focusing on
+leveraging text embeddings to capture semantic similarity. Additionally, we will explore how to adapt the
+loss function for tasks like Natural Language Inference (NLI) to enhance the model’s ability to understand
+semantic relationships between texts.
 
 ## Task 1: BERT Model Training from Scratch
 
@@ -96,6 +100,21 @@ We evaluated the Sentence-BERT model using the SNLI or MNLI datasets, which prov
 - **Mismatched Variables**: During the adaptation of BERT into the Siamese network architecture, another challenge was dealing with mismatched variables between the two inputs (premise and hypothesis). Variables such as input_ids, attention_mask, and token_type_ids had to be carefully aligned across the two input sentences. Any inconsistencies in how these variables were defined or processed for one sentence could lead to errors. Properly managing these variables and ensuring they had compatible values and shapes was key to preventing training issues.
 - **Overfitting**: Another challenge was overfitting, which became apparent after evaluating the model on the test data. The model performed well during training but showed signs of reduced generalization on unseen data. This overfitting issue was likely due to the small size of the training dataset (only 1000 samples). Expanding the dataset or applying regularization techniques such as dropout or data augmentation could help mitigate this issue and improve the model's ability to generalize to new, unseen data.
 
+### Potential improvements or modifications:
+**Tensor Dimension Mismatches**:
+- **Shape Alignment**: Use checks to validate tensor shapes at key stages, ensuring compatibility before feeding them into the model.
+- **Dynamic Padding/Truncation**: Apply dynamic padding or truncation to align the dimensions of both input sentences in the Siamese network.
+- **Prebuilt Sentence Transformers**: Utilize pre-existing models like Sentence-BERT (SBERT) or Hugging Face’s Transformers to handle tensor alignment automatically, saving time and reducing complexity.
+
+**Managing Mismatched Variables**:
+- **Consistent Preprocessing**: Ensure consistency in preprocessing (e.g., input_ids, attention_mask, token_type_ids) across both sentences to prevent misalignment.
+- **Custom Tokenization**: Develop scripts to automatically handle variable alignment for different sentence pairs in the Siamese network.
+- **Error Handling & Debugging**: Implement error detection tools to quickly identify mismatched variables and streamline debugging.
+
+**Mitigating Overfitting**:
+- **Data Augmentation**: Use techniques like paraphrasing or back-translation to generate more diverse training data, improving generalization.
+- **Regularization**: Apply dropout, L2 regularization, or early stopping to prevent overfitting by reducing model complexity.
+- **Transfer Learning**: Fine-tune a pre-trained BERT or SBERT model on the existing dataset to leverage prior knowledge and improve performance with limited data.
 ---
 
 ## Task 4: Text Similarity Web Application
@@ -115,7 +134,9 @@ A Flask-based web application was developed to showcase the functionality of the
 - **Hypothesis**: The man is performing music.
 - **Prediction**: Entailment
 
-  ![web1](https://github.com/user-attachments/assets/7bd7cabd-4b2d-4f04-8cdb-0520b2559409)
-  ![web2](https://github.com/user-attachments/assets/bca0a696-18f0-49de-b9ed-af760c77aae4)
+![web1](https://github.com/user-attachments/assets/1521c8a7-6c7f-4371-a64a-6dcce7c896ff)
+![web2](https://github.com/user-attachments/assets/9f2f62a0-fc3f-4ab5-8ae3-c2d9db418969)
+
+
 
 
